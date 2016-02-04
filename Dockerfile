@@ -15,9 +15,7 @@ RUN apt-get -qy --force-yes dist-upgrade
 # Install required packages
 RUN apt-get install -qy avahi-daemon avahi-utils libavahi-client3 wget
 
-# Download and install Plex (non plexpass)
-# This gets the latest non-plexpass version
-RUN wget -P /tmp `wget -q --no-check-certificate -O - https://plex.tv/downloads | grep -o '[^"'"'"']*amd64.deb'|grep -v binaries`
+RUN wget -P /tmp https://downloads.plex.tv/plex-media-server/0.9.15.2.1663-7efd046/plexmediaserver_0.9.15.2.1663-7efd046_amd64.deb
 RUN dpkg -i /tmp/plex*.deb
 RUN rm -f /tmp/plex*.deb
 
